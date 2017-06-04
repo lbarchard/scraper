@@ -24,5 +24,12 @@
     "mongoose": "^4.10.2",
     "morgan": "^1.7.0",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.13",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "webpack": "^1.13.1"
   }
 }
