@@ -23,7 +23,9 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.10.2",
     "morgan": "^1.7.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
