@@ -3,7 +3,14 @@ var React = require("react");
 
 // Create the Child1 Component
 var Saved = React.createClass({
+  getInitialState: function() {
 
+    return {
+			viewLabel: "View Scraped",
+			viewSaved: false,
+			savedArticles1: this.props.savedArticles
+    };
+  },
   // // Child1 has a state that keeps track of it's food value
   // getInitialState: function() {
 	// 	return {
@@ -29,10 +36,10 @@ var Saved = React.createClass({
   },
 
   render: function() {
-		var data = this.props.savedArticles
+		var data = this.state.savedArticles1
 		console.log(data)
 		console.log("just logged")
-		if (data != undefined) {
+		if (data != "undefined") {
 		var savedArticles = 				
 								data.map(function(row, index){
 									return (
@@ -45,9 +52,8 @@ var Saved = React.createClass({
 		<table className="table table-bordered table-responsive">
 			<thead>
 				<tr>
-				<th className="col-md-1">#</th>
-				<th className="col-md-5">Title</th>
-				<th className="col-md-1">Delete</th>
+				<th className="col-md-8">Title</th>
+				<th className="col-md-4">Note</th>
 				</tr>
 			</thead>
 			<tbody>

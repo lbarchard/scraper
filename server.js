@@ -152,7 +152,7 @@ app.post("/articles/:id", function(req, res) {
     }
     // Otherwise
     else {
-      // Use the article id to find and update it's note
+      // Use the article id to find and update its note
       Article.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id })
       // Execute the above query
       .exec(function(err, doc) {
@@ -169,6 +169,34 @@ app.post("/articles/:id", function(req, res) {
   });
 });
 
+app.post("/save/:id", function(req, res) {
+      Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": true })
+    // Execute the above query
+    .exec(function(err, doc) {
+      // Log any errors
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // Or send the document to the browser
+        Article.find({saved: false}, function(error, doc) {
+            // Log any errors
+            if (error) {
+              console.log(error);
+            }
+            // Or send the doc to the browser as a json object
+            else {
+              console.log("sending result")
+              console.log(doc)
+              res.json(doc);
+            }
+          });
+
+        console.log("saved")
+        // res.send(doc);
+      }
+    });
+});
 
 // Listen on port 3000
 app.listen(process.env.PORT || 3000, function() {

@@ -9,27 +9,39 @@ var Scraped = React.createClass({
     return {
       viewLabel: "View Saved",
 	  viewSaved: true,
-	  scrapedArticles: []
+	  scrapedArticles1: this.props.scrapedArticles
     };
   },
   handleClick: function() {
 		
   },
-  save: function(thing) {
-	  console.log(thing)
+  save: function(id) {
+	axios.post('/save/' + id)
+		.then(function (response) {
+			console.log(response.data);
+			this.setState({scrapedArticles1: response.data})
+		}.bind(this))
+		.catch(function (error) {
+			console.log(error);
+		});
+				// this.setState({ viewLabel: "View Saved" })
+				// this.setState({viewSaved: true})
+				// console.log(this.state.scrapedArticles)
+				// ReactDOM.render(
+				// 	<Scraped scrapedArticles={this.state.scrapedArticles}/>,
+				// 	document.getElementById('grid')
+				// );
   },
   render: function() {
-		var data = this.props.scrapedArticles
-		var thisThing = this
-		console.log(thisThing)
+		var data = this.state.scrapedArticles1
 		var scrapedArticlesTable = 	data.map(function(row, index){
 			return (
 				<tr>
 					<td key={index}><a href={row.link}>{row.title}</a></td>
-					<td onClick={thisThing.save} key={row._id}><button>save</button></td>
+					<td  key={row._id}><button onClick={() => this.save(row._id)}>save</button></td>
 				</tr>
 			)
-		})
+		}, this)
 							
     return (
 		<table className="table table-bordered table-responsive">

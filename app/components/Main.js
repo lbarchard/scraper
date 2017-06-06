@@ -18,10 +18,6 @@ var Main = React.createClass({
 	  scrapedArticles: []
     };
   },
-	// componentWillMount : function () {
-	// 	var data = this.getData();
-	// 	this.setState({data : data});
-	// },
   
   toggleView: function() {
 		if (this.state.viewSaved) {
@@ -40,10 +36,7 @@ var Main = React.createClass({
 				document.getElementById('grid')
 			);
 		}
-		else {
-					// var data = []
-		// this.render = this.render.bind(this);
-			
+		else {			
 			axios.get('/scraped')
 				.then(function (response) {
 					console.log(response.data);
