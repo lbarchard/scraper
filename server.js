@@ -140,7 +140,7 @@ app.get("/articles/:id", function(req, res) {
 
 
 // Create a new note or replace an existing note
-app.post("/articles/:id", function(req, res) {
+app.post("/note/:id", function(req, res) {
   // Create a new note and pass the req.body to the entry
   var newNote = new Note(req.body);
 

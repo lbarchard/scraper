@@ -24,13 +24,6 @@ var Scraped = React.createClass({
 		.catch(function (error) {
 			console.log(error);
 		});
-				// this.setState({ viewLabel: "View Saved" })
-				// this.setState({viewSaved: true})
-				// console.log(this.state.scrapedArticles)
-				// ReactDOM.render(
-				// 	<Scraped scrapedArticles={this.state.scrapedArticles}/>,
-				// 	document.getElementById('grid')
-				// );
   },
   render: function() {
 		var data = this.state.scrapedArticles1
