@@ -14,24 +14,49 @@ var Main = React.createClass({
 
     return {
       viewLabel: "View Saved",
-	  viewSaved: false
+	  viewSaved: true,
+	  scrapedArticles: []
     };
   },
+	// componentWillMount : function () {
+	// 	var data = this.getData();
+	// 	this.setState({data : data});
+	// },
   
   toggleView: function() {
 		if (this.state.viewSaved) {
+			axios.get('/saved')
+			.then(function (response) {
+				console.log(response.data);
+				this.setState({savedArticles: response.data})
+			}.bind(this))
+			.catch(function (error) {
+				console.log(error);
+			});
 			this.setState({ viewLabel: "View Scraped" })
 			this.setState({viewSaved: false})
 			ReactDOM.render(
-				<Saved />,
+				<Saved savedArticles={this.state.savedArticles}/>,
 				document.getElementById('grid')
 			);
 		}
 		else {
+					// var data = []
+		// this.render = this.render.bind(this);
+			
+			axios.get('/scraped')
+				.then(function (response) {
+					console.log(response.data);
+					this.setState({scrapedArticles: response.data})
+				}.bind(this))
+				.catch(function (error) {
+					console.log(error);
+				});
 			this.setState({ viewLabel: "View Saved" })
 			this.setState({viewSaved: true})
+			console.log(this.state.scrapedArticles)
 			ReactDOM.render(
-				<Scraped />,
+				<Scraped scrapedArticles={this.state.scrapedArticles}/>,
 				document.getElementById('grid')
 			);
 		}

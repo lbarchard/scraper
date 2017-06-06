@@ -1,17 +1,9 @@
 // Include React
 var React = require("react");
-var SaveButton = require("./SaveButton");
 
 // Create the Child1 Component
-var Scraped = React.createClass({
-  getInitialState: function() {
+var SaveButton = React.createClass({
 
-    return {
-      viewLabel: "View Saved",
-	  viewSaved: true,
-	  scrapedArticles: []
-    };
-  },
   handleClick: function() {
 		
   },
@@ -48,4 +40,4 @@ var Scraped = React.createClass({
 });
 
 // Export the component back for use in other files
-module.exports = Scraped;
+module.exports = SaveButton;
